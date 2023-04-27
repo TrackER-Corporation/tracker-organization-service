@@ -1,6 +1,5 @@
 import { beforeAll, describe, expect, it, vi } from 'vitest';
-import { createOrganization, deleteOrganization, getAll, getOrganizationById, getOrganizationByUserId, updateOrganization, updateOrganizationResources } from '../db/controller/controller';
-import app from "../index"
+import { createOrganization, getAll, getOrganizationById, getOrganizationByUserId, updateOrganization, updateOrganizationResources } from '../db/controller/controller';
 import { connectToDatabase } from '../db/services/database.service';
 
 
@@ -118,18 +117,4 @@ describe('Test the organization API endpoints', () => {
         await updateOrganizationResources(req, res, () => { });
         expect(res.status).toHaveBeenCalledWith(400);
     });
-
-    // it('should return a 400 status code if any required fields are missing', async () => {
-    //     const req = {
-    //         params: {},
-    //     };
-    //     const res = {
-    //         status: vi.fn().mockReturnThis(),
-    //         json: vi.fn(),
-    //     };
-
-    //     await deleteOrganization(req, res, () => { });
-    //     expect(res.status).toHaveBeenCalledWith(400);
-    // });
-
 })
