@@ -6,7 +6,7 @@ import { collections } from '../services/database.service'
 // @desc    Get goals
 // @route   GET /api/goals
 // @access  Private
-export const getOrganizationById = asyncHandler(async (req, res) => {
+export const getOrganizationById = asyncHandler(async (req, res, next) => {
     const goal = await collections?.organizations?.findOne({ _id: new ObjectId(req.params.id) })
     if (goal)
         res.status(200).json({
@@ -22,11 +22,11 @@ export const getOrganizationById = asyncHandler(async (req, res) => {
         })
     else {
         res.status(400)
-        throw new Error('organization not found')
+        // throw new Error('organization not found')
     }
 })
 
-export const getOrganizationByUserId = asyncHandler(async (req, res) => {
+export const getOrganizationByUserId = asyncHandler(async (req, res, next) => {
     const goal = await collections?.organizations?.findOne({ userId: new ObjectId(req.params.id) })
     if (goal)
         res.status(200).json({
@@ -42,18 +42,18 @@ export const getOrganizationByUserId = asyncHandler(async (req, res) => {
         })
     else {
         res.status(400)
-        throw new Error('organization not found')
+        // throw new Error('organization not found')
     }
 })
 
 
-export const getAll = asyncHandler(async (req, res) => {
+export const getAll = asyncHandler(async (req, res, next) => {
     const goal = await collections?.organizations?.find({}).toArray()
     if (goal)
         res.status(200).json(goal)
     else {
         res.status(400)
-        throw new Error('Organizations not found')
+        // throw new Error('Organizations not found')
     }
 })
 
@@ -61,10 +61,10 @@ export const getAll = asyncHandler(async (req, res) => {
 // @desc    Set goal
 // @route   POST /api/goals
 // @access  Private
-export const createOrganization = asyncHandler(async (req, res) => {
+export const createOrganization = asyncHandler(async (req, res, next) => {
     if (!req.body.userId) {
         res.status(400)
-        throw new Error('Please add a text field')
+        // throw new Error('Please add a text field')
     }
 
     const preference = await collections?.organizations?.insertOne({
@@ -83,15 +83,15 @@ export const createOrganization = asyncHandler(async (req, res) => {
 // @desc    Update goal
 // @route   PUT /api/goals/:id
 // @access  Private
-export const updateOrganization = asyncHandler(async (req, res) => {
+export const updateOrganization = asyncHandler(async (req, res, next) => {
     const organization = await collections?.organizations?.findOne(new ObjectId(req.params.id))
     if (!organization) {
         res.status(400)
-        throw new Error('Organization not found')
+        // throw new Error('Organization not found')
     }
     if (!req.params.id) {
         res.status(401)
-        throw new Error('User not found')
+        // throw new Error('User not found')
     }
 
     const update = await collections?.organizations?.findOneAndUpdate({ _id: new ObjectId(req.params.id) }, req.body, {
@@ -101,15 +101,15 @@ export const updateOrganization = asyncHandler(async (req, res) => {
     res.status(200).json(update)
 })
 
-export const updateOrganizationResources = asyncHandler(async (req, res) => {
+export const updateOrganizationResources = asyncHandler(async (req, res, next) => {
     const organization = await collections?.organizations?.findOne(new ObjectId(req.params.id))
     if (!organization) {
         res.status(400)
-        throw new Error('Organization not found')
+        // throw new Error('Organization not found')
     }
     if (!req.params.id) {
         res.status(401)
-        throw new Error('User not found')
+        // throw new Error('User not found')
     }
 
     const update = await collections?.organizations?.findOneAndUpdate({ _id: new ObjectId(req.params.id) }, req.body,)
@@ -117,15 +117,15 @@ export const updateOrganizationResources = asyncHandler(async (req, res) => {
     res.status(200).json(update)
 })
 
-export const deleteOrganization = asyncHandler(async (req, res) => {
+export const deleteOrganization = asyncHandler(async (req, res, next) => {
     const preference = await collections?.organizations?.find({ _id: new ObjectId(req.params.id) })
     if (!preference) {
         res.status(400)
-        throw new Error('Organization not found')
+        // throw new Error('Organization not found')
     }
     if (!req.params.id) {
         res.status(401)
-        throw new Error('User not found')
+        // throw new Error('User not found')
     }
 
     const update = await collections?.organizations?.deleteOne(preference)
