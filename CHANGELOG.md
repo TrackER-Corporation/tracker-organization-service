@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.1.0](https://github.com/TrackER-Corporation/tracker-organization-service/compare/v1.0.0...v1.1.0) (2023-05-02)
+
+
+### Features
+
+* update api route ([e222699](https://github.com/TrackER-Corporation/tracker-organization-service/commit/e222699b74056a04e35b169b267fae85b7f57c22))
+* update route ([12558d8](https://github.com/TrackER-Corporation/tracker-organization-service/commit/12558d8a6177a6cde86a576a84ea53d971046c2e))
+
+
+### Bug Fixes
+
+* removed code smells ([0c1f639](https://github.com/TrackER-Corporation/tracker-organization-service/commit/0c1f6390fbad13e94e6ed0ac6ab6e187f091d703))
+
 ## 1.0.0 (2023-04-24)
 
 
