@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/TrackER-Corporation/tracker-organization-service/compare/v1.1.0...v1.1.1) (2023-05-11)
+
+
+### Bug Fixes
+
+* error instead return value ([304691f](https://github.com/TrackER-Corporation/tracker-organization-service/commit/304691fef5b2eaff26255ea08edf98ffce0dc170))
+
 ## [1.1.0](https://github.com/TrackER-Corporation/tracker-organization-service/compare/v1.0.0...v1.1.0) (2023-05-02)
 
 
