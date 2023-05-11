@@ -36,8 +36,7 @@ describe('Test the organization API endpoints', () => {
             status: vi.fn().mockReturnThis(),
             json: vi.fn(),
         };
-        await getOrganizationById(req, res, () => { });
-        expect(res.status).toHaveBeenCalledWith(400);
+        expect(async () => await getOrganizationById(req, res, {})).rejects.toThrow(/Error/);
     });
 
     it('should return an organization of existing user', async () => {
@@ -62,8 +61,7 @@ describe('Test the organization API endpoints', () => {
             json: vi.fn(),
         };
 
-        await getOrganizationByUserId(req, res, () => { });
-        expect(res.status).toHaveBeenCalledWith(400);
+        expect(async () => await getOrganizationByUserId(req, res, {})).rejects.toThrow(/Error/);
     });
 
     it('should return all organizations', async () => {
@@ -88,8 +86,7 @@ describe('Test the organization API endpoints', () => {
             json: vi.fn(),
         };
 
-        await createOrganization(req, res, () => { });
-        expect(res.status).toHaveBeenCalledWith(400);
+        expect(async () => await createOrganization(req, res, {})).rejects.toThrow(/Error/);
     });
 
     it('should not update an organization if id is missing', async () => {
@@ -100,9 +97,7 @@ describe('Test the organization API endpoints', () => {
             status: vi.fn().mockReturnThis(),
             json: vi.fn(),
         };
-
-        await updateOrganization(req, res, () => { });
-        expect(res.status).toHaveBeenCalledWith(400);
+        expect(async () => await updateOrganization(req, res, {})).rejects.toThrow(/Error/);
     });
 
     it('should not update organization resources if id is missing', async () => {
@@ -113,8 +108,6 @@ describe('Test the organization API endpoints', () => {
             status: vi.fn().mockReturnThis(),
             json: vi.fn(),
         };
-
-        await updateOrganizationResources(req, res, () => { });
-        expect(res.status).toHaveBeenCalledWith(400);
+        expect(async () => await updateOrganizationResources(req, res, {})).rejects.toThrow(/Error/);
     });
 })
